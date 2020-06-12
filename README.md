@@ -27,53 +27,106 @@ Laravel has the most extensive and thorough [documentation](https://laravel.com/
 
 If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+--------------------------------------------------------------------------------------------------
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-- [云软科技](http://www.yunruan.ltd/)
+# Instrucciones de Instalación
 
-## Contributing
+Este documento describe los pasos necesarios para configurar el entorno de desarrollo en la PC local bajo sistemas operativos Linux utilizando Docker.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Pre instalación del Proyecto.
 
-## Code of Conduct
+* Tener instalado Git.
+* Tener instalado Composer.
+* Tener instalado php-client php-mbstring.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Clonar Repositorio de GitHub.
 
-## Security Vulnerabilities
+### Realizar la instalación de composer en el proyecto.
+```
+https://getcomposer.org/download/
+```
+```
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php -r "if (hash_file('SHA384', 'composer-setup.php') === '544e09ee996cdf60ece3804abc52599c22b1f40f4323403c44d44fdfdd586475ca9813a858088ffbc1f233e9b180f061') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+```
+PD: Tener en cuenta que el hash de arriba siempre se actualiza por lo que es mejor entrar a la página de composer. ===> ENTRAR A COMPOSER .org y ejecutar script de descarga composer.phar
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+#### Copiamos el `composer.phar` de instalación que nos proveen los comandos anteriores en la carpeta raíz del proyecto (`docku/`)
 
-## License
+### Instalación de los contenedores de Docker.
+* Primeramente tener `docker` y `docker-compose` instalados (utilizar las guías de Digital Ocean estan bien documentadas).
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. Entrar a la carpeta de docker del proyecto. (`TP2-Lab3MartinM/docker`)
+
+2. Realizar un `docker-compose pull`
+
+3. Realizar un `docker-compose up` (Al realizar este comando en un momento queda clavado el proceso porque ya termino, debemos cancelarlo al proceso con `Ctrl + C`)
+
+4. Encender los contenedores con `docker-compose start`
+
+5. Listo ya se encuentra levantado el servidor y la base de datos (MySQL).
+
+### Asignación de los permisos de Laravel.
+Es necesario para la correcta visualización y funcionamiento del proyecto que se asignen los siguientes permisos en la carpeta raíz del proyecto (`docker/`):
+
+```
+    sudo chown -R 1000:33 storage/
+    sudo chmod -R g+w storage/
+    sudo chown -R 1000:33 bootstrap/cache
+    sudo chmod -R g+w bootstrap/cache
+```
+
+PD: Puede suceder que en momentos al crearse archivos de Logs nuevos tengamos que reasignar los permisos al storage/ (ver como solucionar esto, muchas veces al terminar la instalación del proyecto necesitamos asignar de nuevo estos permisos).
+ 
+### Instalación de las dependencias.
+1. Nos ubicamos en la carpeta de docker del proyecto (`docker`)
+
+2. Acceder al Lord Commander (Ricky Fort) ejecutando `./webapp` (basicamente es nuestro bash de nginx `docker-compose run --user=1000 phpnginx bash`)
+
+3. 
+a)  Si es la primera vez que instlamos las dependencencias ejecutamos `php composer.phar require ocramius/proxy-manager
+` <br>
+b)  Ejecutamos `./composer.phar install`
+
+4. Esperar la instalación de dependencias de Laravel y compañía.
+
+### Crear archivo de Enviroment
+1. Crear un archivo ```.env```
+2. Copiar lo que existe en el ```.env.example```
+3. Este archivo contiene las credenciales de las cuentas de los servicios utilizados.
+4. En la carpeta raíz del proyecto ejecutar el comando `cp .env.example .env`
+
+### Ejecución de las migraciones (Laravel)
+0. Primeramente actualizar el archivo `cp .env.example .env` con los datos correspondientes de la BD:
+
+```
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=producto
+DB_USERNAME=test
+DB_PASSWORD=test
+```
+
+1. Entramos al `bash nginx` del Lord Commander ubicados en `lacade/docalacade` ejecutar: `./webapp`.
+
+2. Ejecutamos dentro del bash `php artisan migrate`
+
+3. Una vez terminada la ejecución ya tendremos las tablas correspondientes en nuestra base de datos `producto`.
+
+4. Ejecutar para tener el `.env` completo y correcto `php artisan key:generate`.
+
+5. Listo ya podemos salir del comandante.
+
+### Ultimos pasos.
+1. Ya podemos entrar al sitio `localhost`
+
+2. Deberíamos visualizar correctamente el sitio de bienvenida (O algun Health Check en el caso de ser API).
+
+
+
+
+ framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
