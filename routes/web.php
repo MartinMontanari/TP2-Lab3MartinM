@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +13,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('products');
 });
+
+Route::view('/products/new','new')->name('newProductForm');
+Route::post('/products/new','ProductControllers\CreateProductController@execute')->name('createProduct');

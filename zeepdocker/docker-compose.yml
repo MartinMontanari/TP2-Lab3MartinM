@@ -10,9 +10,9 @@ services:
       - ./mysql-config:/etc/mysql/conf.d
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: apizeep
-      MYSQL_USER: test
-      MYSQL_PASSWORD: test
+      MYSQL_DATABASE: products
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
       USER: 1000
 
   beanstalkd:
