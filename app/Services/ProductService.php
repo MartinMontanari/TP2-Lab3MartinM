@@ -17,16 +17,15 @@ class ProductService
         $this->productRepository = $productRepository;
     }
 
-    public function CreateProduct($command) : array
+    public function CreateProduct(CreateProductCommand $command)
     {
-        if($command instanceof CreateProductCommand){
-            $product = new Product();
-            $product->setProductName($command->getProductName());
-            $product->setProductDescription($command->getProductDescription());
-            $product->setProductprice($command->getProductPrice());
-            $product->setProductStock($command->getProductStock());
+        $product = new Product();
+        $product->setProductName($command->getProductName());
+        $product->setProductDescription($command->getProductDescription());
+        $product->setProductprice($command->getProductPrice());
+        $product->setProductStock($command->getProductStock());
 
-            $this->productRepository->saveNew($product);
-        }
+        $this->productRepository->saveNew($product);
+
     }
 }

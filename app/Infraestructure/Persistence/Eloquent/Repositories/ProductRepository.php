@@ -23,9 +23,9 @@ class ProductRepository
     }
 
     /**
-     * @return array
+     * @return Product[]|\Illuminate\Database\Eloquent\Collection
      */
-    public function showAll() : array
+    public function showAll()
     {
         return Product::all();
     }

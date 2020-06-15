@@ -29,6 +29,8 @@ class CreateProductController extends Controller
         try{
             $command = $this->adapter->adapt($request);
             $this->service->CreateProduct($command);
+
+            return redirect('products');
         }catch (InvalidBodyException $errors){
             return redirect()->back()->withErrors($errors->getMessages());
         }

@@ -23,14 +23,38 @@
                 <input type="submit" class="btn btn-primary btn-block" value="Agregar producto">
             </form>
         </div>
-
         <br>
         <br>
         <br>
+        @if (isset($products) && !$products->isEmpty())
+            <div class="card-body">
 
-
+                <table class="table">
+                    <thead class="thead-light">
+                    <tr>
+                        <th>{{__('Id')}}</th>
+                        <th>{{__('Nombre')}}</th>
+                        <th>{{__('Descripcion')}}</th>
+                        <th>{{__('Precio')}}</th>
+                        <th>{{__('Stock')}}</th>
+                    </tr>
+                    </thead>
+                    @endif
+                    @foreach($products as $itemProduct)
+                        <tbody>
+                        <tr>
+                            <th scope="row">{{$itemProduct->getId()}}</th>
+                            <td>{{$itemProduct->getProductName()}}</td>
+                            <td>{{$itemProduct->getProductDescription()}}</td>
+                            <td>{{$itemProduct->getProductPrice()}}</td>
+                            <td>{{$itemProduct->getProductStock()}}</td>
+                        </tr>
+                        </tbody>
+                    @endforeach
+                </table>
+            </div>
     </div>
-</div>
+
 
 </body>
 </html>
