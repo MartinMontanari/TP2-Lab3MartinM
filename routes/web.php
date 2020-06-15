@@ -13,8 +13,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('products');
+    return redirect('products');
 });
 
+Route::get('/products','ProductControllers\IndexProductsController@execute')->name('indexProductForm');
 Route::view('/products/new','new')->name('newProductForm');
-Route::post('/products/new','ProductControllers\CreateProductController@execute')->name('createProduct');
+Route::post('/products','ProductControllers\CreateProductController@execute')->name('createProduct');

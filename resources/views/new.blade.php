@@ -37,6 +37,16 @@
                 </form>
             </div>
         </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-7">
+                <div class="form-group"><br>
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
     </div>
 </body>
 </html>

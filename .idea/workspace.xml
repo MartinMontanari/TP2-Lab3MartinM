@@ -19,13 +19,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a676df17-e136-4209-8498-c3cc0a22b2ac" name="Default Changelist" comment="" />
+    <list default="true" id="a676df17-e136-4209-8498-c3cc0a22b2ac" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -144,6 +147,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -178,6 +182,10 @@
       <option name="presentableId" value="Default" />
       <updated>1591989983830</updated>
       <workItem from="1591989985908" duration="1496000" />
+      <workItem from="1592189698900" duration="2579000" />
+      <workItem from="1592238368903" duration="1357000" />
+      <workItem from="1592239752161" duration="989000" />
+      <workItem from="1592240993587" duration="763000" />
     </task>
     <servers />
   </component>
@@ -200,6 +208,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="70" y="194" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592189994008">
+      <screen x="0" y="27" width="1920" height="1011" />
+    </state>
+    <state x="70" y="194" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1011@0.27.1920.1011" timestamp="1592189994008" />
     <state x="361" y="260" width="412" height="558" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1592186674713">
       <screen x="0" y="27" width="1920" height="1011" />
     </state>
@@ -220,17 +232,17 @@
       <screen x="0" y="27" width="1920" height="1011" />
     </state>
     <state width="1874" height="252" key="GridCell.Tab.0.right/0.27.1920.1011@0.27.1920.1011" timestamp="1591991483601" />
-    <state x="248" y="236" width="951" height="600" key="NewPhpClassDialog" timestamp="1592186981988">
+    <state x="248" y="236" width="951" height="600" key="NewPhpClassDialog" timestamp="1592239043202">
       <screen x="0" y="27" width="1920" height="1011" />
     </state>
-    <state x="248" y="236" width="951" height="600" key="NewPhpClassDialog/0.27.1920.1011@0.27.1920.1011" timestamp="1592186981988" />
+    <state x="248" y="236" width="951" height="600" key="NewPhpClassDialog/0.27.1920.1011@0.27.1920.1011" timestamp="1592239043202" />
     <state x="372" y="454" width="399" height="164" key="NewPhpFileDialog" timestamp="1592171592513">
       <screen x="0" y="27" width="1920" height="1011" />
     </state>
     <state x="372" y="454" width="399" height="164" key="NewPhpFileDialog/0.27.1920.1011@0.27.1920.1011" timestamp="1592171592513" />
-    <state x="143" y="248" width="672" height="678" key="search.everywhere.popup" timestamp="1592182321446">
+    <state x="143" y="248" width="672" height="678" key="search.everywhere.popup" timestamp="1592240557210">
       <screen x="0" y="27" width="1920" height="1011" />
     </state>
-    <state x="143" y="248" width="672" height="678" key="search.everywhere.popup/0.27.1920.1011@0.27.1920.1011" timestamp="1592182321446" />
+    <state x="143" y="248" width="672" height="678" key="search.everywhere.popup/0.27.1920.1011@0.27.1920.1011" timestamp="1592240557210" />
   </component>
 </project>
