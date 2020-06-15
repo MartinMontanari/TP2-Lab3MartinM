@@ -107,8 +107,8 @@ DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
 DB_DATABASE=producto
-DB_USERNAME=test
-DB_PASSWORD=test
+DB_USERNAME=root
+DB_PASSWORD=root
 ```
 
 1. Entramos al `bash nginx` del Lord Commander ubicados en `lacade/docalacade` ejecutar: `./webapp`.
@@ -125,7 +125,6 @@ DB_PASSWORD=test
 1. Ya podemos entrar al sitio `localhost`
 
 2. Deberíamos visualizar correctamente el sitio de bienvenida (O algun Health Check en el caso de ser API).
-
 
 
 
