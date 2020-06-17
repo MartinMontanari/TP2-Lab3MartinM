@@ -82,9 +82,9 @@ Es necesario para la correcta visualización y funcionamiento del proyecto que s
 PD: Puede suceder que en momentos al crearse archivos de Logs nuevos tengamos que reasignar los permisos al storage/ (ver como solucionar esto, muchas veces al terminar la instalación del proyecto necesitamos asignar de nuevo estos permisos).
  
 ### Instalación de las dependencias.
-1. Nos ubicamos en la carpeta de docker del proyecto (`docker`)
+1. Nos ubicamos en la carpeta raíz del proyecto (`/TP2-Lab3MartinM`)
 
-2. Acceder al Lord Commander (Ricky Fort) ejecutando `./webapp` (basicamente es nuestro bash de nginx `docker-compose run --user=1000 phpnginx bash`)
+2. Acceder al Lord Commander (Ricky Fort) ejecutando `./webapp` (basicamente es nuestro bash de nginx `docker-compose run --user=1000 phpnginx bash` que se puede ejecutar dentro de la carpeta de docker `TP2-Lab3MartinM/zeepdocker`)
 
 3. 
 a)  Si es la primera vez que instlamos las dependencencias ejecutamos `php composer.phar require ocramius/proxy-manager
@@ -94,10 +94,10 @@ b)  Ejecutamos `./composer.phar install`
 4. Esperar la instalación de dependencias de Laravel y compañía.
 
 ### Crear archivo de Enviroment
+En la carpeta raíz del proyecto ejecutar el comando `cp .env.example .env`, lo que hace éste comando es:
 1. Crear un archivo ```.env```
 2. Copiar lo que existe en el ```.env.example```
 3. Este archivo contiene las credenciales de las cuentas de los servicios utilizados.
-4. En la carpeta raíz del proyecto ejecutar el comando `cp .env.example .env`
 
 ### Ejecución de las migraciones (Laravel)
 0. Primeramente actualizar el archivo `cp .env.example .env` con los datos correspondientes de la BD:
@@ -106,21 +106,39 @@ b)  Ejecutamos `./composer.phar install`
 DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
-DB_DATABASE=producto
+DB_DATABASE=products
 DB_USERNAME=root
 DB_PASSWORD=root
 ```
 
-1. Entramos al `bash nginx` del Lord Commander ubicados en `lacade/docalacade` ejecutar: `./webapp`.
+1. Entramos al `bash nginx` del Lord Commander ubicados en la carpeta raíz `/TP2-Lab3MartinM` ejecutar: `./webapp`.
 
 2. Ejecutamos dentro del bash `php artisan migrate`
 
-3. Una vez terminada la ejecución ya tendremos las tablas correspondientes en nuestra base de datos `producto`.
+3. Una vez terminada la ejecución ya tendremos las tablas correspondientes en nuestra base de datos `products`.
 
 4. Ejecutar para tener el `.env` completo y correcto `php artisan key:generate`.
 
 5. Listo ya podemos salir del comandante.
 
+### Revisar datos de la BDD en el container de MySQL (docker)
+1. En la carpeta raíz del proyecto se puede ejecutar el scrip `mysql.sh` tirando el comando `sh mysql.sh` en una terminal.
+2. Loguearse como root `mysql -u root -p` password `root`.
+3. Ejecutar las querys que quiera para realizar las consultas.
+
+### Revisar datos de la BDD en entorno gráfico (adminer)
+1. Con los containers de docker corriendo, ingresar a la URL `localhost:8080` y se le desplegará el login de adminer.
+2. Loggearse con las credenciales 
+`
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=products
+DB_USERNAME=root
+DB_PASSWORD=root
+`
+3. Seleccionar la tabla `products` del listado
+4. Realizar las consultas a la bdd desde el entorno gráfico.
 ### Ultimos pasos.
 1. Ya podemos entrar al sitio `localhost`
 
